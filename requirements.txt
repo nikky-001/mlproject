@@ -6,4 +6,5 @@ matplotlib
 adaboost
 catboost
 xgboost
+svm
 -e .
