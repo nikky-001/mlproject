@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AQI Input Form</title>
+</head>
+<body>
+  <h2>AQI Predictor</h2>
+  <form action="{{ url_for('predict_datapoint') }}" method="post">
+    <label>City: 
+        <select name="City" required>
+          <option value="">--Select--</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Kolkata">Kolkata</option>
+        </select>
+    </label><br><br>
+    <label>Datetime: <input type="date" name="Datetime" required></label><br><br>
+    <label>PM2.5: <input type="range" name="PM2.5" min="0" max="500" step="1" oninput="pm25_out.value = this.value">
+      <output id="pm25_out"></output></label><br><br>
+    <label>PM10: <input type="range" name="PM10" min="0" max="500" step="1" oninput="pm10_out.value = this.value">
+      <output id="pm10_out"></output></label><br><br>
+    <label>NO: <input type="range" name="NO" min="0" max="200" step="1" oninput="no_out.value = this.value">
+      <output id="no_out"></output></label><br><br>
+    <label>NO₂: <input type="range" name="NO2" min="0" max="200" step="1" oninput="no2_out.value = this.value">
+      <output id="no2_out"></output></label><br><br>
+    <label>NOx: <input type="range" name="NOx" min="0" max="200" step="1" oninput="nox_out.value = this.value">
+      <output id="nox_out"></output></label><br><br>
+    <label>NH₃: <input type="range" name="NH3" min="0" max="50" step="1" oninput="nh3_out.value = this.value">
+      <output id="nh3_out"></output></label><br><br>
+    <label>CO: <input type="range" name="CO" min="0" max="10" step="1" oninput="co_out.value = this.value">
+      <output id="co_out"></output></label><br><br>
+    <label>SO₂: <input type="range" name="SO2" min="0" max="100" step="1" oninput="so2_out.value = this.value">
+      <output id="so2_out"></output></label><br><br>
+    <label>O₃: <input type="range" name="O3" min="0" max="200" step="1" oninput="o3_out.value = this.value">
+      <output id="o3_out"></output></label><br><br>
+    <label>AQI Bucket: 
+      <select name="AQI_Bucket" required>
+        <option value="">--Select--</option>
+        <option>Good</option>
+        <option>Satisfactory</option>
+        <option>Moderate</option>
+        <option>Poor</option>
+        <option>Very Poor</option>
+        <option>Severe</option>
+      </select>
+    </label><br><br>
+    <button type="submit">Submit</button>
+    <h2>The predicted AQI is: {{ results }}</h2>
+  </form>
+</body>
+</html>
