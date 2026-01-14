@@ -81,3 +81,6 @@ class ModelTrainer:
         except Exception as e:
             logging.error("Error in Model Trainer")
             raise CustomException(e,sys)
+
+
+
